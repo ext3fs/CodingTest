@@ -64,15 +64,17 @@ bitmask_combination : programmers 순위검색(72412)
 최대값				: max_element(v.begin(), v.end(), comp)
 					  bool comp(int a, int b){return a<b}
 
-dijkstra			: 그래프구조 - 특정노드에서 최단경로 탐색, 양의 가중치, 우선순위큐
+dijkstra			: 그래프구조 - 특정노드에서 최단경로 탐색, 양의 가중치, priority_queue 
 					  O(ElogV)
 
-floyd_warsall		: 그래프구조 - 모든노드들의 최단경로 테이블만듬(대각원소는 0),
+floyd_warsall		: dp algorithm
+					  그래프구조 - 모든노드들의 최단경로 테이블만듬(대각원소는 0)
 					  음의 가중치가능, 음수사이클X(대각원소에 음수가 나타나면)
 					  O(V^3)
 
-kruskal				: 그래프구조 - 최소신장트리만들기(minimum spanning tree) -> 최소비용 네트웍 구성
-					  최소비용 간선의 노드들을 차례로 합침(union_node(a,b)), 탐욕법
+kruskal				: greed algorithm
+					  그래프구조 - 최소신장트리만들기(minimum spanning tree) -> 최소비용 네트웍 구성
+					  최소비용 간선의 노드들을 차례로 합침(union_node(a,b))
 					  O(ElogE)
 
 topology_sort		: 그래프구조 - 선수과목을 고려한 학습 순서 정하기
