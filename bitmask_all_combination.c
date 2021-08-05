@@ -9,13 +9,13 @@ using namespace std;
 
 vector<int> solution(vector<string> info, vector<string> query)
 {
-    vector<int> answer;
+	vector<int> answer;
 	unordered_map<string,vector<int>> info_map;
     
 	for(auto& s : info)
 	{
-    	string str;
-    	stringstream ss(s);
+    		string str;
+		stringstream ss(s);
 		vector<string> tok;
 
 		while(ss >> str)
@@ -53,34 +53,34 @@ vector<int> solution(vector<string> info, vector<string> query)
 
 	for(auto& q : query)
 	{
-    	stringstream ss(q);
+  	  	stringstream ss(q);
 		string tok[4], str;
 		int score;
 
 		ss >> tok[0] >> str >> tok[1] >> str >> tok[2] >> str >> tok[3] >> score; 	
-        str = tok[0] + tok[1] + tok[2] + tok[3];
+		str = tok[0] + tok[1] + tok[2] + tok[3];
         
 		auto& v = info_map[str];
-        answer.push_back(v.end() - lower_bound(v.begin(), v.end(), score));
+		answer.push_back(v.end() - lower_bound(v.begin(), v.end(), score));
 	}
 	
-    return answer;
+	return answer;
 }
 
 int main(void)
 {
 			
 	vector<string> info = {"java backend junior pizza 150","python frontend senior chicken 210",
-						   "python frontend senior chicken 150","cpp backend senior pizza 260",
-						   "java backend junior chicken 80","python backend senior chicken 50"};
+			       "python frontend senior chicken 150","cpp backend senior pizza 260",
+			       "java backend junior chicken 80","python backend senior chicken 50"};
 	vector<string> query = {"java and backend and junior and pizza 100",
-							"python and frontend and senior and chicken 200",
-							"cpp and - and senior and pizza 250","- and backend and senior and - 150",
-							"- and - and - and chicken 100","- and - and - and - 150"};
+				"python and frontend and senior and chicken 200",
+				"cpp and - and senior and pizza 250","- and backend and senior and - 150",
+				"- and - and - and chicken 100","- and - and - and - 150"};
 	vector<int> v = solution(info, query);
 
-	for(auto e : v)
-		cout << e;
+	for(auto val : v)
+		cout << val;
 	cout << endl;	
 	return 0;
 }

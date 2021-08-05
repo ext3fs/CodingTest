@@ -11,14 +11,17 @@ int main(void)
 	int val[n];
 	int seq[n] = {0,};
 
-	for(int i=0; i<n; ++i){
+	for(int i=0; i<n; ++i)
+	{
 		scanf("%d", val+i);
-
+		
 		for(int j=0; j<i; ++j)
 			if(val[i] > val[j])
 				seq[i] = max(seq[i], seq[j]);
+		
 		maxi = max(maxi,++seq[i]);
 	}
+
 	printf("%d\n", maxi);
 	return 0;
 }
