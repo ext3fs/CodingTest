@@ -25,6 +25,7 @@ void dfs(vector<vector<int>>& adj)
 		visit[node] = true;
 		printf("%d ", node);
 
+		//reverse
 		for(int i=adj[node].size()-1; i>=0; --i)
 			stk.push(adj[node][i]);
 	}
