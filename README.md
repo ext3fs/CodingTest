@@ -10,6 +10,7 @@
 * [최대공약수](./gcd.c)
 * [dfs & bfs](./dfs_bfs.c)
 * [longest increasing subsequence](./lis.c)
+* [longest common subsequence](./lcs.c)
 * [Dijkstra](./dijkstra.c)
 * [Floyd Warshall](./floydWarshall.c)
 * [Kruskal](./kruskal.c)
