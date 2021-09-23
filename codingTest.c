@@ -25,13 +25,23 @@ vector			: front(), back(), push_back(),
 queue			: <queue> front(), push(), pop()
 
 priority_queue		: <queue> heap 구조
-			  push()->O(logN), pop()->O(logN)
-			  priority_queue<int,vector<int>,greater<int>> q;							
+			  top()->O(1), push()->O(logN), pop()->O(logN)
+			  priority_queue<int,vector<int>,greater<int>> q;
+
 set			: red black tree
 			  find()->O(logN), insert()->O(logN), erase()->O(logN)
 			  iter set.lower_bound(n) <- n이상
 			  iter set.upper_bound(n) <- n초과
 			  set<int, greater<int>>
+
+tuple			: <tuple>
+			  using tiii = tuple<int,int,int>;
+			  tiii tup(1, 'x', "str");
+			  auto tup = make_tuple(1, 'x', "str");
+		  	  get<0>(tup) -> 1	  
+
+max_element		: <algorithm>
+			  iter = max_element(v.begin(), v.end());
 
 -----------------------------------------------------------------------------------------------------
 

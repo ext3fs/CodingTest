@@ -9,10 +9,6 @@ struct Node{
 	bool visit[4];
 };
 
-class Test{
-	int i;
-};
-
 int dx[] = {1,0,-1,0};
 int dy[] = {0,1,0,-1};
 

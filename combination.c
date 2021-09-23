@@ -6,7 +6,7 @@ using namespace std;
 int ar[] = {1,2,3,4};
 vector<int> v; 
 
-void Combination(int idx, int n, int r)
+void combination(int idx, int n, int r)
 {
 	if(v.size() == (size_t)r)
 	{	
@@ -19,14 +19,14 @@ void Combination(int idx, int n, int r)
 	for(int i=idx; i<n; ++i)
 	{
 		v.push_back(ar[i]);
-		Combination(i+1, n, r);
+		combination(i+1, n, r);
 		v.pop_back();
 	}
 }
 
 int	main(void)
 {
-	Combination(0, 4, 2);	
+	combination(0, 4, 2);	
 	return	0;
 }
 

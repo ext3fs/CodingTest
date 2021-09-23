@@ -5,7 +5,7 @@ using namespace std;
 
 int ar[] = {1,2,3};
 
-void Permutation(int depth, int n, int r)
+void permutation(int depth, int n, int r)
 {
 	if(depth == r)
 	{	
@@ -18,14 +18,14 @@ void Permutation(int depth, int n, int r)
 	for(int i=depth; i<n; ++i)
 	{
 		swap(ar[depth], ar[i]);
-		Permutation(depth+1, n, r);
+		permutation(depth+1, n, r);
 		swap(ar[depth], ar[i]);
 	}
 }
 
 int	main(void)
 {
-	Permutation(0, 3, 3);	
+	permutation(0, 3, 3);	
 	return	0;
 }
 
