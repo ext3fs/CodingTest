@@ -20,15 +20,18 @@ int solution(vector<int> priorities, int location)
 		pair<int,int> node = q.front();
 		q.pop();
 
-		if(node.second == pq.front()){
+		if(node.second == pq.top())
+		{
 			if(node.first == location)
 				return ans;
+
+			++ans;
 			pq.pop();
 			continue;		
 		}
+
 		q.push(node);
 	}
-	return ans;
 }
 
 int main(void)
@@ -38,7 +41,6 @@ int main(void)
 	vector<int> pri = {1,1,9,1,1,1};
 	int loc = 0;
 	int ans = solution(pri, loc);
-
 	cout << ans << endl;
 	return	0;
 }

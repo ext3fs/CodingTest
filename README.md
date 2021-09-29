@@ -1,5 +1,5 @@
 ## CodingTest
-* [Summary](./codingTest.c)
+* [Summary](./summary.c)
 * [is Prime?](./isPrime.c)
 * [Fibonacci](./fibonacci.c)
 * [Sieve of Eratosthenes](./eratos.c)

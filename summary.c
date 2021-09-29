@@ -20,7 +20,10 @@ stringstream		: <sstream> ss.clear(), ss.str(str), ss << str, while(ss >> str)
 
 vector			: front(), back(), push_back(),
 	      		  vector<vector<string>> v(n, vector<int>(n,"")) 	
-			  vector<vector<int>> v(n, vector<int>()) 	
+			  vector<vector<int>> v(n, vector<int>())
+			  v.erase(v.begin() + n);	
+
+stack			: <stack> top(), push(), pop()
 
 queue			: <queue> front(), push(), pop()
 
@@ -34,6 +37,10 @@ set			: red black tree
 			  iter set.upper_bound(n) <- n초과
 			  set<int, greater<int>>
 
+map			: red black tree
+			  map.insert(make_pair("ss",0)) -> map["ss"] = 0 와 같음
+			  레코드 없는 상태에서 ++map["ss"] 하면 ss,0 생성 & ++0  
+
 tuple			: <tuple>
 			  using tiii = tuple<int,int,int>;
 			  tiii tup(1, 'x', "str");
@@ -44,12 +51,18 @@ max_element		: <algorithm>
 			  iter = max_element(v.begin(), v.end());
 
 -----------------------------------------------------------------------------------------------------
+반올림			: <cmath> ceil(double 올림), floor(버림), round(반올림) 
 
-sort			: <algorithm> sort(begin, end, greater<int>())
+절대값			: abs(int n)
 
-알파벳, 숫자 변환	: isupper(ch), islower(ch), toupper(ch), isdigit(ch)
+알파벳, 숫자 변환	: isupper(ch), islower(ch), isdigit(ch), toupper(ch)
 
-절대값			: <cmath> abs(int n)
+getline(토큰화)		: stringstream ss(exp);
+			  string token;
+			  while(getline(ss,token,' '))
+				v.push_back(token);
+
+sort			: <algorithm> sort(begin, end, greater<>())
 
 컨테이너 최대값		: max_element(v.begin(), v.end(), comp)
 			  bool comp(int a, int b){return a<b}
@@ -71,7 +84,7 @@ a ~ b 소수가 몇개?	: eratos(int a, int b)
 			  permutation(int detph, int n, int r) <- swap(a,b)
 
 조합			: n개중에 r개 뽑음, 순서상관없음
-			  combination(int depth, int n, int r) <- v.push_back()
+			  combination(int idx, int n, int r) <- v.push_back()
 
 bitmask_combination	: programmers 순위검색(72412)
 
@@ -96,7 +109,7 @@ kruskal 		: greed algorithm
 			  O(ElogE)
 
 topology_sort		: 그래프구조 - 선수과목을 고려한 학습 순서 정하기
-			  의존성 그래프구조에서 진입차수(indegree)가 0인 노드를 큐에 넣으면서 진입차수 변경
+			  의존성 그래프구조에서 진입차수(indegree)가 0인 노드를 큐에 넣으면서 진입차수변경
 			  큐에서 빼낸 노드 순서가 위상정렬
 			  큐에 한꺼번에 여러 노드가 들어가는 경우 -> 정답 여러개
 			  큐에서 빼낸 노드의 갯수가 v가 아니면 -> 사이클 발생
