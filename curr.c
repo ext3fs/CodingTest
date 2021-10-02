@@ -1,45 +1,52 @@
 //programmers 42587
 #include <iostream>
-#include <vector>
-#include <queue>
 using namespace std;
 
-int solution(vector<int> priorities, int location)
+class Node
 {
-	int ans=1;
-	queue<pair<int,int>> q;
-	priority_queue<int> pq;
-
-	for(size_t i=0; i<priorities.size(); ++i){
-		q.push(make_pair(i,priorities[i]));
-		pq.push(priorities[i]);
+	int n;		
+public:
+	Node(int arg) : n(arg) {
+		cout << "create" << endl;
+	}
+	~Node(){
+		cout << "delete" << endl;
+	}
+	Node(Node& src) : n(src.n) {
+		cout << "copy create" << endl;
+	}
+	Node& operator=(const Node& rhs){
+		cout << "copy = " << endl;
+		n = rhs.n;
+		return *this;
+	}
+	Node& operator=(const Node&& rhs){
+		cout << "move = " << endl;
+		n = rhs.n;
+		return *this;
 	}
 
-	while(1)
+	int print()
 	{
-		pair<int,int> node = q.front();
-		q.pop();
-
-		if(node.second == pq.front()){
-			if(node.first == location)
-				return ans;
-			pq.pop();
-			continue;		
-		}
-		q.push(node);
+		return n;
 	}
-	return ans;
+};
+
+Node fn(void)
+{
+	cout << "fn start" << endl;
+	Node ret(2);
+	cout << "fn end" << endl;
+	return ret;
 }
 
 int main(void)
 {
-	//vector<int> pri = {2,1,3,2};
-	//int loc = 2;
-	vector<int> pri = {1,1,9,1,1,1};
-	int loc = 0;
-	int ans = solution(pri, loc);
+	Node a(1);
+       	a = fn();
+	
+	cout << a.print() << endl;
 
-	cout << ans << endl;
 	return	0;
 }
 

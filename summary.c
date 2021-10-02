@@ -103,9 +103,10 @@ floyd_warsall		: dp algorithm
 			  O(V^3)
 
 kruskal 		: greed algorithm
-			  그래프구조 - 최소신장트리만들기(minimum spanning tree) 
+			  그래프구조 - 최소신장트리만들기(MST : minimum spanning tree) 
 			   -> 사이클을 형성하지않는 최소 가중치의 합을 가진 트리구조의 그래프 
 			  최소비용 간선의 노드들을 차례로 합침(union_node(a,b))
+			  n개의 노드를 연결한다면 간선의 수는 n-1
 			  O(ElogE)
 
 topology_sort		: 그래프구조 - 선수과목을 고려한 학습 순서 정하기
