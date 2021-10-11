@@ -36,6 +36,7 @@ set			: red black tree
 			  iter set.lower_bound(n) <- n이상
 			  iter set.upper_bound(n) <- n초과
 			  set<int, greater<int>>
+			  if((iter = st.find()) != st.end())
 
 map			: red black tree
 			  map.insert(make_pair("ss",0)) -> map["ss"] = 0 와 같음
@@ -67,7 +68,8 @@ sort			: <algorithm> sort(begin, end, greater<>())
 컨테이너 최대값		: max_element(v.begin(), v.end(), comp)
 			  bool comp(int a, int b){return a<b}
 
-이진탐색		: <algorithm> bool binary_serach(iter.begin(), iter.end(), n)
+이진탐색		: <algorithm>
+			  bool binary_serach(iter.begin(), iter.end(), n) 
 			  iter lower_bound(iter.begin(), iter.end(), n) <- n이상
 			  iter upper_bound(iter.begin(), iter.end(), n) <- n초과
 
