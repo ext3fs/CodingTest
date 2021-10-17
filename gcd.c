@@ -5,15 +5,16 @@ using namespace std;
 
 int gcd(int a, int b)
 {
-	int rest;
-
-	while((rest = a%b))
+	while(1)
 	{
-		a = b;
-		b = rest;		
-	}
+		int rest = a%b;
 
-	return b;
+		a = b;
+		b = rest;
+		
+		if(b == 0)
+			return a;	
+	}
 }
 
 int	main(void)

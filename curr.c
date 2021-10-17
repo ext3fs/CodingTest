@@ -1,52 +1,25 @@
-//programmers 42587
+#include <vector>
 #include <iostream>
+
 using namespace std;
 
-class Node
+int gcd(int a, int b)
 {
-	int n;		
-public:
-	Node(int arg) : n(arg) {
-		cout << "create" << endl;
-	}
-	~Node(){
-		cout << "delete" << endl;
-	}
-	Node(Node& src) : n(src.n) {
-		cout << "copy create" << endl;
-	}
-	Node& operator=(const Node& rhs){
-		cout << "copy = " << endl;
-		n = rhs.n;
-		return *this;
-	}
-	Node& operator=(const Node&& rhs){
-		cout << "move = " << endl;
-		n = rhs.n;
-		return *this;
-	}
-
-	int print()
+	while(1)
 	{
-		return n;
-	}
-};
+		int rest = a%b;
 
-Node fn(void)
-{
-	cout << "fn start" << endl;
-	Node ret(2);
-	cout << "fn end" << endl;
-	return ret;
+		a = b;
+		b = rest;
+
+		if(b == 0)
+			return a;
+	}
 }
 
-int main(void)
+int	main(void)
 {
-	Node a(1);
-       	a = fn();
-	
-	cout << a.print() << endl;
-
+	cout << gcd(4,6) << endl;	
 	return	0;
 }
 

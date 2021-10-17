@@ -9,14 +9,22 @@ log10 -> 3
 log1000 -> 10
 log10000 -> 10 +3
 
+0xffffffff -> int max
+0x80000000 -> int min
 -----------------------------------------------------------------------------------------------------
 
 string  		: string str(n,0), 	
 		  	  front(), back(), erase(idx, n), erase(iter-1, iter+1), 
-	   	 	  str = string.substr(idx, n), i = string.find(ch) == string::npos, 
+	   	 	  str = string.substr(idx, n), idx = string.find(ch) == string::npos, 
 			  str = to_string(n), stoll(str), stoi(str), stod(str)
+			  <algorithm>
+		  	  reverse(s.begin(), s.end());	  
 
-stringstream		: <sstream> ss.clear(), ss.str(str), ss << str, while(ss >> str)
+stringstream		: <sstream> ss.clear(), ss.str(str), ss << str
+			  while(ss >> token)
+				cout << token << endl;
+			  while(getline(ss, token, ' '))
+				cout << token << endl;
 
 vector			: front(), back(), push_back(),
 	      		  vector<vector<string>> v(n, vector<int>(n,"")) 	
@@ -63,7 +71,7 @@ getline(토큰화)		: stringstream ss(exp);
 			  while(getline(ss,token,' '))
 				v.push_back(token);
 
-sort			: <algorithm> sort(begin, end, greater<>())
+sort			: <algorithm> sort(v.begin(), v.end(), greater<>())
 
 컨테이너 최대값		: max_element(v.begin(), v.end(), comp)
 			  bool comp(int a, int b){return a<b}
@@ -73,7 +81,11 @@ sort			: <algorithm> sort(begin, end, greater<>())
 			  iter lower_bound(iter.begin(), iter.end(), n) <- n이상
 			  iter upper_bound(iter.begin(), iter.end(), n) <- n초과
 
------------------------------------------------------------------------------------------------------
+
+			  
+- algorithm -----------------------------------------------------------------------------------
+
+n진수 만들기		: convt(int n, int val)
 
 약수의 갯수		: cntDivisor(int n)
 
@@ -88,30 +100,29 @@ a ~ b 소수가 몇개?	: eratos(int a, int b)
 조합			: n개중에 r개 뽑음, 순서상관없음
 			  combination(int idx, int n, int r) <- v.push_back()
 
-bitmask_combination	: programmers 순위검색(72412)
 
-최대공약수		: 유클리드 호제법, gcd(a,b) = gcd(b, a%b)
+최대공약수		: 유클리드 호제법, gcd(a,b) = gcd(b, a%b), (a%b == 0) 되면 a가 답 
 
 최소공배수 		: lcm(a,b) = a*b/gcd(a,b) 	
 
-멀쩡한 사각형		: x + y - gcd(x,y)
 
-dijkstra		: 그래프구조 - 특정노드에서 최단경로 탐색, 양의 가중치, priority_queue 
+dijkstra		: 가중치 그래프구조 - 특정노드에서 최단경로 탐색, priority_queue 
 			  O(ElogV)
 
-floyd_warsall		: dp algorithm
-			  그래프구조 - 모든노드들의 최단경로의 인접행렬 만듬(대각원소는 0)
+floyd_warshall		: 가중치 그래프구조 - dp algorithm
+			  모든노드들의 최단경로의 인접행렬 만듬(대각원소는 0)
 			  음의 가중치가능, 음수사이클X(대각원소에 음수가 나타나면)
 			  O(V^3)
 
-kruskal 		: greed algorithm
-			  그래프구조 - 최소신장트리만들기(MST : minimum spanning tree) 
+kruskal 		: 가중치 그래프구조 - greed algorithm
+			  최소신장트리만들기(MST : minimum spanning tree) 
 			   -> 사이클을 형성하지않는 최소 가중치의 합을 가진 트리구조의 그래프 
-			  최소비용 간선의 노드들을 차례로 합침(union_node(a,b))
+			  최소비용 간선의 노드들을 차례로 합침(union_node(a,b), find_root(a)) 
 			  n개의 노드를 연결한다면 간선의 수는 n-1
 			  O(ElogE)
 
-topology_sort		: 그래프구조 - 선수과목을 고려한 학습 순서 정하기
+topology_sort		: 방향성 그래프구조
+			  방향성에 따라 노드들을 줄세우기 -> 선수과목을 고려한 학습 순서 정하기
 			  의존성 그래프구조에서 진입차수(indegree)가 0인 노드를 큐에 넣으면서 진입차수변경
 			  큐에서 빼낸 노드 순서가 위상정렬
 			  큐에 한꺼번에 여러 노드가 들어가는 경우 -> 정답 여러개
@@ -123,4 +134,20 @@ lis			: longest increasing subsequence -> dp algorithm
 lcs			: longest common subsequence -> dp algorithm
 
 two_pointer 		: 구간합
+
+-----------------------------------------------------------------------------------------------------
+
+순위검색		: programmers(72412) -> bitmask_combination
+
+멀쩡한 사각형		: programmers(62048) -> x + y - gcd(x,y)
+
+행렬의 곱셈		: programmers(12949)
+
+
+
+
+
+
+
+
 
