@@ -9,7 +9,7 @@ log10 -> 3
 log1000 -> 10
 log10000 -> 10 +3
 
-0xffffffff -> int max
+0x7fffffff -> int max
 0x80000000 -> int min
 -----------------------------------------------------------------------------------------------------
 
@@ -29,7 +29,8 @@ stringstream		: <sstream> ss.clear(), ss.str(str), ss << str
 vector			: front(), back(), push_back(),
 	      		  vector<vector<string>> v(n, vector<int>(n,"")) 	
 			  vector<vector<int>> v(n, vector<int>())
-			  v.erase(v.begin() + n);	
+			  v.erase(v.begin() + n);
+		  	  v.reserve(n) -> capacity change	  
 
 stack			: <stack> top(), push(), pop()
 
@@ -40,7 +41,7 @@ priority_queue		: <queue> heap 구조
 			  priority_queue<int,vector<int>,greater<int>> q;
 
 set			: red black tree
-			  find()->O(logN), insert()->O(logN), erase()->O(logN)
+			  find(val)->O(logN), insert(val)->O(logN), erase(val)->O(logN)
 			  iter set.lower_bound(n) <- n이상
 			  iter set.upper_bound(n) <- n초과
 			  set<int, greater<int>>
@@ -64,7 +65,8 @@ max_element		: <algorithm>
 
 절대값			: abs(int n)
 
-알파벳, 숫자 변환	: isupper(ch), islower(ch), isdigit(ch), toupper(ch)
+알파벳, 숫자 변환	: bool b = isupper(ch), islower(ch), isdigit(ch)
+			  int i = toupper(ch)
 
 getline(토큰화)		: stringstream ss(exp);
 			  string token;
@@ -80,9 +82,8 @@ sort			: <algorithm> sort(v.begin(), v.end(), greater<>())
 			  bool binary_serach(iter.begin(), iter.end(), n) 
 			  iter lower_bound(iter.begin(), iter.end(), n) <- n이상
 			  iter upper_bound(iter.begin(), iter.end(), n) <- n초과
+			 
 
-
-			  
 - algorithm -----------------------------------------------------------------------------------
 
 n진수 만들기		: convt(int n, int val)
@@ -133,8 +134,6 @@ lis			: longest increasing subsequence -> dp algorithm
 
 lcs			: longest common subsequence -> dp algorithm
 
-two_pointer 		: 구간합
-
 -----------------------------------------------------------------------------------------------------
 
 순위검색		: programmers(72412) -> bitmask_combination
@@ -143,8 +142,11 @@ two_pointer 		: 구간합
 
 행렬의 곱셈		: programmers(12949)
 
+숫자의 표현		: programmers(12924) -> 구간합 & two pointer
 
+N-Queen			: programmers(12952) -> back tracking(dfs 가지치기)
 
+멀리뛰기		: programmers(12914) -> dp : 순서를 고려한 경우의 수    
 
 
 

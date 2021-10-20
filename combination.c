@@ -3,30 +3,31 @@
 
 using namespace std;
 
-int ar[] = {1,2,3,4};
-vector<int> v; 
+vector<int> ar = {1,2,3,4};
+vector<int> tv; 
 
-void combination(int idx, int n, int r)
+void combination(int start, int n, int r)
 {
-	if(v.size() == (size_t)r)
+	if(tv.size() == r)
 	{	
-		for(int i=0; i<r; ++i)
-			cout << v[i] << " ";
+		for(auto& e : tv)
+			cout << e << " ";
 		cout << endl;
 		return;	
 	}	
 	
-	for(int i=idx; i<n; ++i)
+	for(int i=start; i<n; ++i)
 	{
-		v.push_back(ar[i]);
+		tv.push_back(ar[i]);
 		combination(i+1, n, r);
-		v.pop_back();
+		tv.pop_back();
 	}
 }
 
 int	main(void)
 {
-	combination(0, 4, 2);	
+	tv.reserve(ar.size()); 
+	combination(0, 4, 3);	
 	return	0;
 }
 

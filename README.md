@@ -1,10 +1,11 @@
 ## CodingTest
 * [Summary](./summary.c)
+* [n진수](./convt.c)
 * [is Prime?](./isPrime.c)
 * [Fibonacci](./fibonacci.c)
 * [Sieve of Eratosthenes](./eratos.c)
-* [Permutation](./permutation.c)
-* [Overlap Permutation](./overlap_permutation.c)
+* [Permutation](./permutation2.c)
+* [Dup Permutation](./dup_permutation.c)
 * [Combination](./combination.c)
 * [bitmask all combination](./bitmask_all_combination.c)
 * [약수의 갯수](./cntDivisor.c)
