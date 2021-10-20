@@ -27,7 +27,7 @@ void combination(int start, int n, int r)
 int	main(void)
 {
 	tv.reserve(ar.size()); 
-	combination(0, 4, 3);	
+	combination(0, ar.size(), 3);	
 	return	0;
 }
 

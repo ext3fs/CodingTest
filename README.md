@@ -4,6 +4,7 @@
 * [is Prime?](./isPrime.c)
 * [Fibonacci](./fibonacci.c)
 * [Sieve of Eratosthenes](./eratos.c)
+* [Tower of Hanoi](./hanoi.c)
 * [Permutation](./permutation2.c)
 * [Dup Permutation](./dup_permutation.c)
 * [Combination](./combination.c)

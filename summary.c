@@ -5,6 +5,7 @@ https://acmicpc.slack.com : BOJ community
 https://www.onlinegdb.com : gdb IDE
 
 10000000 -> 1초
+
 log10 -> 3
 log1000 -> 10
 log10000 -> 10 +3
@@ -20,7 +21,8 @@ string  		: string str(n,0),
 			  <algorithm>
 		  	  reverse(s.begin(), s.end());	  
 
-stringstream		: <sstream> ss.clear(), ss.str(str), ss << str
+stringstream		: <sstream>
+		          ss.clear(), ss.str(str), ss << str
 			  while(ss >> token)
 				cout << token << endl;
 			  while(getline(ss, token, ' '))
