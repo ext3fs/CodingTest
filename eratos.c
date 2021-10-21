@@ -19,10 +19,9 @@ int solution(int n)
 	}
 
 	for(int i=2; i<=n; ++i)
-	{
 		if(ar[i] == 0)
 			++answer;
-	}
+	
 	return answer;
 }
 

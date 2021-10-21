@@ -18,7 +18,7 @@ using namespace std;
   10을 2진수로 -> 1010(0이 나올때까지 계속 나누어줌, 나머지의 역순)  
  */
 
-string convt(int n, int val)
+string nMod(int n, int val)
 {
 	static string number = "0123456789ABCDEF";
 	string s = "";
@@ -39,7 +39,7 @@ string solution(int n, int t, int m, int p)
 {
 	string s = "";
 	for(int i=0; s.size()<t*m; ++i)
-		s += convt(n,i);
+		s += nMod(n,i);
 	
 	string ans = "";
 	for(int i=p-1; ans.size()<t; i+=m)

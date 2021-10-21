@@ -88,7 +88,7 @@ sort			: <algorithm> sort(v.begin(), v.end(), greater<>())
 
 - algorithm -----------------------------------------------------------------------------------
 
-n진수 만들기		: convt(int n, int val)
+n진수 만들기		: nMod(int n, int val)
 
 약수의 갯수		: cntDivisor(int n)
 
@@ -98,10 +98,10 @@ n이 소수인지?		: isPrime(int n)  루트n까지만 나눠보면 됨
 a ~ b 소수가 몇개?	: eratos(int a, int b) 
 
 순열 			: n개중에 r개 뽑음, 순서상관있음
-			  permutation(int detph, int n, int r) <- swap(a,b)
+			  permutation(int n, int r) -> 방문체크
 
 조합			: n개중에 r개 뽑음, 순서상관없음
-			  combination(int idx, int n, int r) <- v.push_back()
+			  combination(int start, int n, int r)
 
 
 최대공약수		: 유클리드 호제법, gcd(a,b) = gcd(b, a%b), (a%b == 0) 되면 a가 답 
