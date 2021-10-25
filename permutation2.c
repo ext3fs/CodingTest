@@ -4,7 +4,7 @@ using namespace std;
 
 vector<int> ar = {1,2,3,4};
 vector<int> tv;
-vector<bool> use(ar.size());
+vector<bool> isUse(ar.size());
 
 void permutation(int n, int r)
 {
@@ -18,14 +18,14 @@ void permutation(int n, int r)
 	
 	for(int i=0; i<n; ++i)
 	{
-		if(use[i])
+		if(isUse[i])
 			continue;
 	
 		tv.push_back(ar[i]);
-		use[i] = true;
+		isUse[i] = true;
 		permutation(n, r);
 		tv.pop_back();
-		use[i] = false;
+		isUse[i] = false;
 	}
 }
 

@@ -17,6 +17,7 @@
 * [Floyd Warshall](./floydWarshall.c)
 * [Kruskal](./kruskal.c)
 * [Topology sort(adjacency list)](./topology_sort.c)
+* [Trie](./trie2.c)
 * [longest increasing subsequence](./lis.c)
 * [longest common subsequence](./lcs.c)
 * [scale??](./scale.c)

@@ -6,7 +6,6 @@ using namespace std;
 /*
    %연산은 분배법칙이 성립하지 않는다.
    (12 + 13)%5 = 0 VS 12%5 + 13%5 = 5
-   마지막에 ret%5 해줘야함? 
    */
 int solution(int n)
 {
