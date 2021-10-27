@@ -2,10 +2,9 @@
 #include <iostream>
 using namespace std;
 
-vector<int> ar = {1,2,3};
 vector<int> tv;
 
-void dup_permutation(int n, int r)
+void dup_permutation(vector<int>& ar, size_t r)
 {
 	if(tv.size() == r)
 	{
@@ -15,18 +14,19 @@ void dup_permutation(int n, int r)
 		return;
 	}
 
-	for(int i=0; i<n; ++i)
+	for(size_t i=0; i<ar.size(); ++i)
 	{
 		tv.push_back(ar[i]);
-		dup_permutation(n,r);
+		dup_permutation(ar, r);
 		tv.pop_back();
 	}
 }
 
 int main(void)
 {
+	vector<int> ar = {1,2,3};
+
 	tv.reserve(ar.size());		
-	dup_permutation(ar.size(),3);
+	dup_permutation(ar,3);
 	return	0;
 }
-

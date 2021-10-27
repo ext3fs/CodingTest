@@ -8,7 +8,7 @@ struct Node
 	bool isEnd;
 	vector<optional<Node>> child;
 
-	Node(){
+	explicit Node(){
 		isEnd = false;
 		child.resize(26);
 	}
@@ -85,7 +85,11 @@ int main()
 	a.show();
 	cout << endl;
 
+	Node c(move(b));
+	c.show();
+	cout << endl;
+
 	string str = "ab";
-	cout << "find = "<< str << " -> "<< a.find(str) << endl;	
+	cout << "find = "<< str << " -> "<< c.find(str) << endl;	
 	return 0;
 }

@@ -2,10 +2,9 @@
 #include <iostream>
 using namespace std;
 
-vector<int> ar = {1,2,3,4};
 vector<int> tv; 
 
-void combination(int start, int n, int r)
+void dup_combination(vector<int>& ar, size_t r, size_t start)
 {
 	if(tv.size() == r)
 	{	
@@ -15,18 +14,20 @@ void combination(int start, int n, int r)
 		return;	
 	}	
 	
-	for(int i=start; i<n; ++i)
+	for(size_t i=start; i<ar.size(); ++i)
 	{
 		tv.push_back(ar[i]);
-		combination(i+1, n, r);
+		dup_combination(ar, r, i);
 		tv.pop_back();
 	}
 }
 
 int	main(void)
 {
+	vector<int> ar = {1,2,3,4};
+
 	tv.reserve(ar.size()); 
-	combination(0, ar.size(), 3);	
+	dup_combination(ar, 3, 0);	
 	return	0;
 }
 

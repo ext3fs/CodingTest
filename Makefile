@@ -3,9 +3,9 @@ OBJECTS	= curr.o
 TARGET	= curr
 
 
-.SUFFIXES : .c .o
+.SUFFIXES : .cpp .o
 
-.c.o :
+.cpp.o :
 	$(CC) -std=c++17 -O2 -c -g -Wall $<
 
 $(TARGET)	: $(OBJECTS)

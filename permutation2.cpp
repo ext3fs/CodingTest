@@ -2,11 +2,10 @@
 #include <iostream>
 using namespace std;
 
-vector<int> ar = {1,2,3,4};
 vector<int> tv;
-vector<bool> isUse(ar.size());
+vector<bool> isUse;
 
-void permutation(int n, int r)
+void permutation(vector<int>& ar, size_t r)
 {
 	if(tv.size() == r)
 	{	
@@ -16,14 +15,14 @@ void permutation(int n, int r)
 		return;	
 	}	
 	
-	for(int i=0; i<n; ++i)
+	for(size_t i=0; i<ar.size(); ++i)
 	{
 		if(isUse[i])
 			continue;
 	
 		tv.push_back(ar[i]);
 		isUse[i] = true;
-		permutation(n, r);
+		permutation(ar, r);
 		tv.pop_back();
 		isUse[i] = false;
 	}
@@ -31,8 +30,11 @@ void permutation(int n, int r)
 
 int main(void)
 {
+	vector<int> ar = {1,2,3,4};
+
 	tv.reserve(ar.size());
-	permutation(ar.size(), 3);	
+	isUse.resize(ar.size());
+	permutation(ar, 3);	
 	return 0;
 }
 

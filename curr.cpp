@@ -14,7 +14,7 @@ int main(void)
 {
 	vector<int> ar = {1,2,3};
 	vector<bool> tv(ar.size(), false);
-	int r = 3;
+	int r = 2;
 		
 	for(int i=0; i<r; ++i)
 		tv[i] = true;

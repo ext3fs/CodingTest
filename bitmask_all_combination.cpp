@@ -12,8 +12,10 @@ int main(void)
 		cout << mask << " :	";
 		
 		for(int i=0; i<ar.size(); ++i)
+		{
 			if(mask & (1<<i))
 				cout << ar[i];
+		}
 		
 		cout << endl;
 	}
