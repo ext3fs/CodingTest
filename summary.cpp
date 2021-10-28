@@ -38,18 +38,18 @@ stack			: <stack> top(), push(), pop()
 
 queue			: <queue> front(), push(), pop()
 
-priority_queue		: <queue> heap 구조
+priority_queue		: <queue> heap구조(root에 최대값) -> 중복원소 허용
 			  top()->O(1), push()->O(logN), pop()->O(logN)
 			  priority_queue<int,vector<int>,greater<int>> q;
 
-set			: red black tree
+set			: <set> red black tree(root에 중간값) -> 중복원소 허용안함
 			  find(val)->O(logN), insert(val)->O(logN), erase(val)->O(logN)
 			  iter set.lower_bound(n) <- n이상
 			  iter set.upper_bound(n) <- n초과
 			  set<int, greater<int>>
 			  if((iter = st.find()) != st.end())
 
-map			: red black tree
+map			: <map> red black tree
 			  map.insert(make_pair("ss",0)) -> map["ss"] = 0 와 같음
 			  레코드 없는 상태에서 ++map["ss"] 하면 ss,0 생성 & ++0  
 
@@ -67,7 +67,7 @@ max_element		: <algorithm>
 
 절대값			: abs(int n)
 
-알파벳, 숫자 변환	: bool b = isupper(ch), islower(ch), isdigit(ch)
+알파벳, 숫자 변환	: bool b = isupper(ch), islower(ch), isdigit(ch), isalpha(ch)
 			  int i = toupper(ch)
 
 getline(토큰화)		: stringstream ss(exp);
@@ -75,7 +75,13 @@ getline(토큰화)		: stringstream ss(exp);
 			  while(getline(ss,token,' '))
 				v.push_back(token);
 
-sort			: <algorithm> sort(v.begin(), v.end(), greater<>())
+regex_replace		: <regex>
+			  string s = "search";
+			  regex r = "ch"; 
+			  s = regex_replace(s, r, "1"); -> "sear1"	
+
+sort			: <algorithm>
+			  sort(v.begin(), v.end(), greater<>())
 
 컨테이너 최대값		: max_element(v.begin(), v.end(), comp)
 			  bool comp(int a, int b){return a<b}
