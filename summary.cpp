@@ -6,9 +6,9 @@ https://www.onlinegdb.com : gdb IDE
 
 10000000 -> 1초
 
-log10 -> 3
+log10 -> 3.333..
 log1000 -> 10
-log10000 -> 10 +3
+log10000 -> 10 + 3.33..
 
 0x7fffffff -> int max
 0x80000000 -> int min
@@ -16,13 +16,15 @@ log10000 -> 10 +3
 
 string  		: string str(n,0), 	
 		  	  front(), back(), erase(idx, n), erase(iter-1, iter+1), 
-	   	 	  str = string.substr(idx, n), idx = string.find(ch) == string::npos, 
-			  str = to_string(n), stoll(str), stoi(str), stod(str)
+	   	 	  str = string.substr(idx, n) -> idx부터 n개, substr(idx) -> idx부터 끝까지
+			  idx = string.find(ch) == string::npos, 
+			  str = to_string(n)
+			  stoi("234AAAA"), stoll(str), stod(str)
 			  <algorithm>
 		  	  reverse(s.begin(), s.end());	  
 
 stringstream		: <sstream>
-		          ss.clear(), ss.str(str), ss << str
+		          ss.clear(), ss.str("123AAA"), ss << str
 			  while(ss >> token)
 				cout << token << endl;
 			  while(getline(ss, token, ' '))
@@ -32,7 +34,8 @@ vector			: front(), back(), push_back(),
 	      		  vector<vector<string>> v(n, vector<int>(n,"")) 	
 			  vector<vector<int>> v(n, vector<int>())
 			  v.erase(v.begin() + n);
-		  	  v.reserve(n) -> capacity change	  
+		  	  v.reserve(n) -> capacity change
+
 
 stack			: <stack> top(), push(), pop()
 
@@ -51,16 +54,19 @@ set			: <set> red black tree(root에 중간값) -> 중복원소 허용안함
 
 map			: <map> red black tree
 			  map.insert(make_pair("ss",0)) -> map["ss"] = 0 와 같음
-			  레코드 없는 상태에서 ++map["ss"] 하면 ss,0 생성 & ++0  
+			  레코드 없는 상태에서 ++map["ss"] 하면 ss,0 생성 & ++0
 
 tuple			: <tuple>
-			  using tiii = tuple<int,int,int>;
-			  tiii tup(1, 'x', "str");
+			  using tics = tuple<int,char,string>;
+			  tics tup(1, 'x', "str");
 			  auto tup = make_tuple(1, 'x', "str");
 		  	  get<0>(tup) -> 1	  
 
 max_element		: <algorithm>
 			  iter = max_element(v.begin(), v.end());
+
+find			: <algorithm>
+			  iter = find(v.begin(), v.end(), val)			  
 
 -----------------------------------------------------------------------------------------------------
 반올림			: <cmath> ceil(double 올림), floor(버림), round(반올림) 
@@ -77,11 +83,11 @@ getline(토큰화)		: stringstream ss(exp);
 
 regex_replace		: <regex>
 			  string s = "search";
-			  regex r = "ch"; 
-			  s = regex_replace(s, r, "1"); -> "sear1"	
+			  s = regex_replace(s, regex("ch"), "1"); -> "sear1"	
 
 sort			: <algorithm>
 			  sort(v.begin(), v.end(), greater<>())
+			  stable_sort()	
 
 컨테이너 최대값		: max_element(v.begin(), v.end(), comp)
 			  bool comp(int a, int b){return a<b}
@@ -155,9 +161,3 @@ lcs			: longest common subsequence -> dp algorithm
 N-Queen			: programmers(12952) -> back tracking(dfs 가지치기)
 
 멀리뛰기		: programmers(12914) -> dp : 순서를 고려한 경우의 수    
-
-
-
-
-
-
