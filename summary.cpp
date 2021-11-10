@@ -47,11 +47,15 @@ priority_queue		: <queue> heap구조(root에 최대값) -> 중복원소 허용
 
 set			: <set> red black tree(root에 중간값) -> 중복원소 허용안함
 			  find(val)->O(logN), insert(val)->O(logN), erase(val)->O(logN)
-			  iter set.lower_bound(n) <- n이상
-			  iter set.upper_bound(n) <- n초과
+			  iter = set.lower_bound(n) <- n이상
+			  iter = set.upper_bound(n) <- n초과
 			  set<int, greater<int>>
 			  if((iter = st.find()) != st.end())
 
+multiset		: <set>
+			  mst.erase(val) -> 모든 val 지워짐
+			  iter = mst.find(val); mst.erase(iter)로 지워야 하나만 지워짐 
+			
 map			: <map> red black tree
 			  map.insert(make_pair("ss",0)) -> map["ss"] = 0 와 같음
 			  레코드 없는 상태에서 ++map["ss"] 하면 ss,0 생성 & ++0

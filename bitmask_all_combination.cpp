@@ -7,17 +7,15 @@ int main(void)
 {
 	vector<int> ar = {1,2,3,4,5};
 
-	for(int mask=0; mask<1<<ar.size(); ++mask)
+	for(int val=1; val<1<<ar.size(); ++val)
 	{
-		cout << mask << " :	";
+		cout << val << " :	";
 		
 		for(int i=0; i<ar.size(); ++i)
-		{
-			if(mask & (1<<i))
+			if(val & (1<<i))
 				cout << ar[i];
-		}
-		
 		cout << endl;
 	}
+
 	return 0;
 }

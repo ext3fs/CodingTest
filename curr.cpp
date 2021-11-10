@@ -3,13 +3,10 @@ using namespace std;
 
 int main(void)
 {
-	char a = 1;
-	int b = 1;
-	long c = 1;
+	int n = 2;
+	int ar[2'2];
 
-	cout << a << endl;
-	cout << b << endl;
-	cout << c << endl;
+	cout << sizeof(ar) << endl;
 
 	return 0;
 }
