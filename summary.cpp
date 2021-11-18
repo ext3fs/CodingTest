@@ -20,8 +20,6 @@ string  		: string str(n,0),
 			  idx = string.find(ch) == string::npos, 
 			  str = to_string(n)
 			  stoi("234AAAA"), stoll(str), stod(str)
-			  <algorithm>
-		  	  reverse(s.begin(), s.end());	  
 
 stringstream		: <sstream>
 		          ss.clear(), ss.str("123AAA"), ss << str
@@ -36,7 +34,6 @@ vector			: front(), back(), push_back(),
 			  v.erase(v.begin() + n);
 		  	  v.reserve(n) -> capacity change
 
-
 stack			: <stack> top(), push(), pop()
 
 queue			: <queue> front(), push(), pop()
@@ -44,6 +41,8 @@ queue			: <queue> front(), push(), pop()
 priority_queue		: <queue> heap구조(root에 최대값) -> 중복원소 허용
 			  top()->O(1), push()->O(logN), pop()->O(logN)
 			  priority_queue<int,vector<int>,greater<int>> q;
+
+deque			: <deque> front(), push_front(), push_back(), pop_front(), pop_back()
 
 set			: <set> red black tree(root에 중간값) -> 중복원소 허용안함
 			  find(val)->O(logN), insert(val)->O(logN), erase(val)->O(logN)
@@ -92,6 +91,9 @@ regex_replace		: <regex>
 sort			: <algorithm>
 			  sort(v.begin(), v.end(), greater<>())
 			  stable_sort()	
+			  
+reverse			: <algorithm>
+		  	  reverse(v.begin(), v.end());	  
 
 컨테이너 최대값		: max_element(v.begin(), v.end(), comp)
 			  bool comp(int a, int b){return a<b}
@@ -119,11 +121,11 @@ a ~ b 소수가 몇개?	: eratos(int a, int b) -> amortized O(n)
 조합			: n개중에 r개 뽑음, 순서상관없음
 			  combination(int start, int n, int r)
 
+최대공약수		: <numeric>
+			  유클리드 호제법, gcd(a,b) = gcd(b, a%b), (a%b == 0) 되면 a가 답 
 
-최대공약수		: 유클리드 호제법, gcd(a,b) = gcd(b, a%b), (a%b == 0) 되면 a가 답 
-
-최소공배수 		: lcm(a,b) = a*b/gcd(a,b) 	
-
+최소공배수 		: <numeric>
+			  lcm(a,b) = a*b/gcd(a,b) 	
 
 dijkstra		: 가중치 그래프구조 - 특정노드에서 최단경로 탐색, priority_queue 
 			  O(ElogV)

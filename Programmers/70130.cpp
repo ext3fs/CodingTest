@@ -16,72 +16,74 @@ using namespace std;
    2는 4임 -> 가장 빈도수가 높다고 스타수열 사이즈가 높은건 아님   
 */
 
-bool cmp(const pair<int,int>& a, const pair<int,int>& b)
-{
-	return a.second > b.second;
-}
-
 int solution(vector<int> a)
 {
-	if(a.size() < 2)
-		return 0;
+	for(int i : a)
+		cout << i << " ";
+	cout << endl;
 
-	unordered_map<int,int> mp;
-	for(auto& val : a)
-		++mp[val];
+	vector<int> idx(500000, -1);
+	vector<int> cnt(500000);
 
-	vector<pair<int,int>> v(mp.begin(),mp.end());
-	sort(v.begin(),v.end(),cmp);	
-
-	priority_queue<int> q;
-	q.push(0);
-	for(auto& p : v)
+	for(int i=0; i<a.size(); ++i)
 	{
-		if(p.second <= q.top())
-			break;
-
-		int succ = 0;
-		vector<bool> isUse(a.size());
+		int val = a[i];
 		
-		if(a[0] == p.first)
+		if(i - idx[val] >= 2)
 		{
-			isUse[0] = true;
-			
-			if(a[1] != p.first){
-				isUse[1] = true;
-				++succ;
-			}	
+			++cnt[val];
+			idx[val] = i;
+			cout << "first : " << val << endl;
+			cout << "cnt" << endl;	
+			for(int j=0; j<cnt.size(); ++j)
+				if(cnt[j])
+					cout << j << " : " << cnt[j] << endl;
+			cout << "idx" << endl;	
+			for(int j=0; j<cnt.size(); ++j)
+				if(idx[j]>=0)
+					cout << j << " : " << idx[j] << endl;
 		}
-
-		for(int i=1; i<a.size()-1; ++i)
+		else if(i+1 < a.size() && a[i+1] != val)
 		{
-			if(a[i] != p.first)
-				continue;
-			
-			isUse[i] = true;
-       			
-			if(isUse[i-1])
-			{
-				if(a[i+1] == p.first)
-					continue;
-				else
-					isUse[i+1] = true;
-			}
-			++succ;
+			++cnt[val];
+			idx[val] = i+1;
+			cout << "second : " << val << endl;
+			cout << "cnt" << endl;	
+			for(int j=0; j<cnt.size(); ++j)
+				if(cnt[j])
+					cout << j << " : " << cnt[j] << endl;
+			cout << "idx" << endl;	
+			for(int j=0; j<cnt.size(); ++j)
+				if(idx[j]>=0)
+					cout << j << " : " << idx[j] << endl;
 		}
-		
-		if(a[a.size()-1] == p.first && !isUse[a.size()-2])
-			++succ;
+		else{
+			idx[val] = i;
+			cout << "third : " << val << endl;
+			cout << "cnt" << endl;	
+			for(int j=0; j<cnt.size(); ++j)
+				if(cnt[j])
+					cout << j << " : " << cnt[j] << endl;
+			cout << "idx" << endl;	
+			for(int j=0; j<cnt.size(); ++j)
+				if(idx[j]>=0)
+					cout << j << " : " << idx[j] << endl;
+		}
+	}
 
-		q.push(succ);
-	}	
-	return q.top()*2;
+	cout << "ans" << endl;	
+	for(int i=0; i<cnt.size(); ++i)
+		if(cnt[i])
+			cout << i << " : " << cnt[i] << endl;
+
+	return *max_element(cnt.begin(),cnt.end()) * 2;
 }
 
 int main(void)
 {
 	//vector<int> v = {0,3,3,0,7,2,0,2,2,0};
-	vector<int> v = {5,2,3,3,5,3};
+	//vector<int> v = {5,2,3,3,5,3};
+	vector<int> v = {2,5,3,2};
 	int ans = solution(v);
 	cout << "ans = " << ans << endl;
 	return	0;
