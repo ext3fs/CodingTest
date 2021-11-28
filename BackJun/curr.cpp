@@ -1,42 +1,33 @@
-//backjun 1644(소수의 연속합) 
 #include <iostream>
-#include <vector>
+#include <queue>
 using namespace std;
 
 int main(void)
 {
-	int n;
-	cin >> n;
+	ios::sync_with_stdio(false), cin.tie(nullptr);
 
-	//eratos
-	vector<bool> isPrime(n+1, true);
-	isPrime[0] = isPrime[1] = false;
-	for(int i=0; i*i<=n; ++i)
-		if(isPrime[i])
-			for(int j=i+i; j<=n; j+=i)
-				isPrime[j] = false;
-
-	vector<int> v;
-	v.reserve(n);
-	for(int i=0; i<=n; ++i)
-		if(isPrime[i])
-			v.push_back(i);
+	int n, m, val, ans=1;
+	cin >> n >> m;
 	
-	int start=0, end=0;
-	int sum=0, ans=0;
-	while(1)
+	priority_queue<int> box;
+	for(int i=0; i<n; ++i)
+		cin >> val, box.push(val);	
+	
+	for(int i=0; i<m; ++i)
 	{
-		if(end == v.size() && sum < n)
+		cin >> val;
+		val = box.top() - val;
+		box.pop();
+		
+		if(val < 0){
+			ans = 0;
 			break;
-
-		if(sum < n)
-			sum += v[end++];			
-		else if(sum > n)
-			sum -= v[start++];
-		else
-			++ans, sum -= v[start++];
+		}
+	
+		if(val)
+			box.push(val);
 	}
 
 	cout << ans << '\n';	
-	return 0;	
+	return 0;
 }

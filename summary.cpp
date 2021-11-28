@@ -99,9 +99,9 @@ reverse			: <algorithm>
 			  bool comp(int a, int b){return a<b}
 
 이진탐색		: <algorithm>
-			  bool binary_serach(iter.begin(), iter.end(), n) 
-			  iter lower_bound(iter.begin(), iter.end(), n) <- n이상
-			  iter upper_bound(iter.begin(), iter.end(), n) <- n초과
+			  bool binary_serach(v.begin(), v.end(), n) 
+			  iter lower_bound(v.begin(), v.end(), n) <- n이상
+			  iter upper_bound(v.begin(), v.end(), n) <- n초과
 			 
 
 - algorithm -----------------------------------------------------------------------------------

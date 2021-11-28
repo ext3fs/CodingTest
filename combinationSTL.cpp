@@ -21,11 +21,8 @@ int main(void)
 
 	do{
 		for(int i=0; i<tv.size(); ++i)
-		{
 			if(tv[i])
 				cout << ar[i] << ' ';
-		}
-
 		cout << endl;
 
 	}while(prev_permutation(tv.begin(),tv.end()));

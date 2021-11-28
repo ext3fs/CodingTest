@@ -1,31 +1,40 @@
 #include <vector>
 #include <iostream>
-
 using namespace std;
 
-int ar[] = {1,2,3};
+vector<int> tv;
+vector<bool> isUse;
 
-void permutation(int depth, int n, int r)
+void permutation(vector<int>& ar, size_t r)
 {
-	if(depth == r)
+	if(tv.size() == r)
 	{	
-		for(int i=0; i<r; ++i)
-			cout << ar[i] << " ";
+		for(auto& e : tv)
+			cout << e << ' ';
 		cout << endl;
 		return;	
 	}	
 	
-	for(int i=depth; i<n; ++i)
+	for(size_t i=0; i<ar.size(); ++i)
 	{
-		swap(ar[depth], ar[i]);
-		permutation(depth+1, n, r);
-		swap(ar[depth], ar[i]);
+		if(isUse[i])
+			continue;
+	
+		tv.push_back(ar[i]);
+		isUse[i] = true;
+		permutation(ar, r);
+		tv.pop_back();
+		isUse[i] = false;
 	}
 }
 
-int	main(void)
+int main(void)
 {
-	permutation(0, 3, 3);	
-	return	0;
+	vector<int> ar = {1,2,3,4};
+
+	tv.reserve(ar.size());
+	isUse.resize(ar.size());
+	permutation(ar, 3);	
+	return 0;
 }
 
