@@ -83,6 +83,8 @@ getline(토큰화)		: stringstream ss(exp);
 			  string token;
 			  while(getline(ss,token,' '))
 				v.push_back(token);
+			  while(getline(cin,token))
+				v.push_back(token);
 
 regex_replace		: <regex>
 			  string s = "search";
@@ -98,7 +100,7 @@ reverse			: <algorithm>
 컨테이너 최대값		: max_element(v.begin(), v.end(), comp)
 			  bool comp(int a, int b){return a<b}
 
-이진탐색		: <algorithm>
+이분탐색		: <algorithm>
 			  bool binary_serach(v.begin(), v.end(), n) 
 			  iter lower_bound(v.begin(), v.end(), n) <- n이상
 			  iter upper_bound(v.begin(), v.end(), n) <- n초과
