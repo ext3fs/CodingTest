@@ -18,6 +18,7 @@ string  		: string str(n,0),
 		  	  front(), back(), erase(idx, n), erase(iter-1, iter+1), 
 	   	 	  str = string.substr(idx, n) -> idx부터 n개, substr(idx) -> idx부터 끝까지
 			  idx = string.find(ch) == string::npos, 
+			  str.replace(idx, n, "s") -> idx부터 n개를 s로 바꿈
 			  str = to_string(n)
 			  stoi("234AAAA"), stoll(str), stod(str)
 
@@ -58,6 +59,7 @@ multiset		: <set>
 map			: <map> red black tree
 			  map.insert(make_pair("ss",0)) -> map["ss"] = 0 와 같음
 			  레코드 없는 상태에서 ++map["ss"] 하면 ss,0 생성 & ++0
+			  map.count(key)  
 
 tuple			: <tuple>
 			  using tics = tuple<int,char,string>;
@@ -142,7 +144,10 @@ kruskal 		: 가중치 그래프구조 - greed algorithm
 			   -> 사이클을 형성하지않는 최소 가중치의 합을 가진 트리구조의 그래프 
 			  최소비용 간선의 노드들을 차례로 합침(union_node(a,b), find_root(a)) 
 			  n개의 노드를 연결한다면 간선의 수는 n-1
-			  O(ElogE)
+			  O(ElogE) - 간선의 수가 작을때 사용
+
+prim			: 임의의 노드에서 최단경로의 노드를 하나씩 추가 -> 최소신장트리를 만들어 나감
+			  O(ElogV) - 간선의 수가 많을때 사용	
 
 topology_sort		: 방향성 그래프구조
 			  방향성에 따라 노드들을 줄세우기 -> 선수과목을 고려한 학습 순서 정하기
