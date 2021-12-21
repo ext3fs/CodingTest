@@ -4,17 +4,17 @@
 #include <queue>
 
 using namespace std;
-using p = pair<int,int>; 
+using pii = pair<int,int>; 
 
-vector<vector<p>> mat;
-vector<int> dist;
+vector<vector<pii>> adj;
+vector<int> cost;
 
 void dijkstra(int start)
 {
-	priority_queue<p, vector<p>, greater<p>> q;
+	priority_queue<pii, vector<pii>, greater<pii>> q;
 
-	dist[start] = 0;
-	q.push(make_pair(0,start));
+	cost[start] = 0;
+	q.push({0,start});
 
 	while(!q.empty())
 	{
@@ -22,17 +22,17 @@ void dijkstra(int start)
 		int curr = q.top().second;
 		q.pop();
 
-		if(dist[curr] < curr_cost)
+		if(cost[curr] < curr_cost)
 			continue;
 		
-		for(auto& m : mat[curr])
+		for(auto& p : adj[curr])
 		{
-			int next_cost = m.first + curr_cost;
-			int next = m.second;
+			int next_cost = p.first + curr_cost;
+			int next = p.second;
 			
-			if(dist[next] > next_cost){
-				dist[next] = next_cost;
-				q.push(make_pair(next_cost,next));	
+			if(cost[next] > next_cost){
+				cost[next] = next_cost;
+				q.push({next_cost,next});	
 			}	
 		}	
 	}	
@@ -48,23 +48,23 @@ int	main(void)
 	cin >> v >> e;
 	cin >> start;
 
-	mat.resize(v+1);
-	dist.resize(v+1, 2e9);
+	adj.resize(v+1);
+	cost.resize(v+1, 1e9);
 	
 	for(int i=0; i<e; ++i){
-		int x,y,cost;
-		cin >> x >> y >> cost;
-		mat[x].push_back(make_pair(cost,y));	
+		int x,y,w;
+		cin >> x >> y >> w;
+		adj[x].push_back({w,y});	
 	}
 
 	dijkstra(start);
 
 	for(int i=1; i<=v; ++i)
 	{
-		if(dist[i] == 2e9)
+		if(cost[i] == 1e9)
 			cout << "INF\n";
 		else
-			cout << dist[i] << '\n';
+			cout << cost[i] << '\n';
 	}
 	return	0;
 }

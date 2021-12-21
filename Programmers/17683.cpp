@@ -1,70 +1,75 @@
-//programmers 방금 그 곡(17683)
+//programmers 방금그곡(17683)
 #include <iostream>
 #include <vector>
-#include <sstream>
 using namespace std;
 
-string convt(string_view s)
+string convt(const string& m)
 {
 	string ret;
+	ret.reserve(m.size());
 
-	for(char c : s)
+	for(int i=0; i<m.size(); ++i)
 	{
-		if(c == '#')
-			ret.back() = tolower(ret.back());  
+		if(m[i] == '#')
+			ret.back() = tolower(ret.back());
 		else
-			ret.push_back(c);			
+			ret.push_back(m[i]);
 	}
-	return ret;	
+
+	return ret;
 }
+
+
+bool isRight(const string& m, const string& music, int play)
+{
+	string s;
+	s.reserve(play);
+
+	int j=0;
+	for(int i=0; i<play; ++i)
+	{
+		s.push_back(music[j]);
+
+		if(++j == music.size())
+			j = 0;
+	}
+
+	if(s.find(m) == string::npos)
+		return false;
+	return true;
+}
+
 
 string solution(string m, vector<string> musicinfos)
 {
-	string ans = "";
-	int maxLen = 0;
+	string ans;
+	int maxPlay = 0;
 
 	m = convt(m);
-
-	cout << "m = " << m << endl;
-	for(string& s : musicinfos)
+	for(const string& s : musicinfos)
 	{
-		stringstream ss(s);
-		int sH, sM, eH, eM;
-		string str, name, mel = "";
-		char c;
-		ss >> sH >> c >> sM >> c >> eH >> c >> eM >> c >> str;
-		
-		int idx = str.find(',');
-		name = str.substr(0,idx);
-		str = convt(str.substr(idx+1));
-		
-		int len = (eH - sH) * 60 + eM - sM;
-		int cnt = len/str.size();
-		int rest = len%str.size();
+		int start = stoi(s.substr(0,2))*60 + stoi(s.substr(3,2));
+		int end = stoi(s.substr(6,2))*60 + stoi(s.substr(9,2));
+		int play = end - start;
+		int i;
+		string name;
+		for(i=12; s[i]!=','; ++i)
+			name.push_back(s[i]);
+		string music = convt(s.substr(i+1));
 
-		while(cnt--)
-			mel += str;
-		mel += str.substr(0,rest);	
-
-		cout << sH << c << sM << c << eH << c << eM
-			<< c << name << c << str << c << mel << endl;
-		
-		if(mel.find(m) != string::npos && len > maxLen){
-			maxLen = len;
-			ans = name;
-		}
+		if(isRight(m, music, play))
+			if(maxPlay < play)
+				maxPlay = play, ans = name; 
 	}
-	
-	return ans.size() ? ans : "(None)";
+
+	return maxPlay ? ans : "(None)";	
 }
 
 int main(void)
 {
-	vector<string> v = {"03:00,03:30,FOO,CC#B#", "04:00,04:31,BAR,CC#BCC#BCC#B"};
-	string s = "CC#BCC#BCC#BCC#B"; 
-	//vector<string> v = {"12:00,12:01,HELLO,A#"};
-	//string s = "A#"; 
+	vector<string> v = {"03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"};
+	string s = "CC#BCC#BCC#BCC#B";
 	string ans = solution(s,v);
-	cout << "ans = " << ans << endl;
+	cout << ans << endl;	
 	return	0;
 }

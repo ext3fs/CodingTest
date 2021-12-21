@@ -1,48 +1,73 @@
-//programmers 모두0으로만들기(76503)
+//programmers 방금그곡(17683)
 #include <iostream>
-#include <string>
 #include <vector>
-#include <sstream>
 using namespace std;
 
-int solution(vector<string> lines)
+string convt(const string& m)
 {
-	vector<pair<double,double>> v;
-    
-	for(auto& line : lines){
-		stringstream ss(line);
-		string tmp,s1,s2;
-		ss >> tmp >> s1 >> s2;
+	string ret;
+	ret.reserve(m.size());
 
-		double h = stod(s1.substr(0)) * 60 * 60;
-		double m = stod(s1.substr(3)) * 60; 
-		double s = stod(s1.substr(6));
-		double end = h + m + s;
-		v.push_back({end-stod(s2)+0.001, end});
-        
-        //cout << end << " = " << sec << endl;
-        //cout << t.back().first << "," << t.back().second << endl;
-	}        
-        
-	int ans = 0;
-	for(int i=0; i<v.size(); ++i)
+	for(int i=0; i<m.size(); ++i)
 	{
-		int cnt = 1;
-		double endPoint = v[i].second + 1; 	
+		if(m[i] == '#')
+			ret.back() = tolower(ret.back());
+		else
+			ret.push_back(m[i]);
+	}
 
-		for(int j=i+1; j<v.size(); ++j)
-			if(v[j].first < endPoint)
-				++cnt;
-        
-		ans = max(ans,cnt);
-        }
-	return ans;
+	return ret;
+}
+
+bool isRight(const string& m, const string& music, int play)
+{
+	string s;
+	s.reserve(play);
+
+	int j=0;
+	for(int i=0; i<play; ++i)
+	{
+		s.push_back(music[j]);
+
+		if(++j == music.size())
+			j = 0;
+	}
+
+	if(s.find(m) == string::npos)
+		return false;
+	return true;
+}
+
+string solution(string m, vector<string> musicinfos)
+{
+	string ans;
+	int maxPlay = 0;
+
+	m = convt(m);
+	for(const string& s : musicinfos)
+	{
+		int start = stoi(s.substr(0,2))*60 + stoi(s.substr(3,2));
+		int end = stoi(s.substr(6,2))*60 + stoi(s.substr(9,2));
+		int play = end - start;
+		int i;
+		string name;
+		for(i=12; s[i]!=','; ++i)
+			name.push_back(s[i]);
+		string music = convt(s.substr(i+1));
+
+		if(isRight(m, music, play))
+			if(maxPlay < play)
+				maxPlay = play, ans = name; 
+	}
+
+	return maxPlay ? ans : "(None)";	
 }
 
 int main(void)
 {
-	vector<string> v = {"2016-09-15 01:00:04.001 2.0s", "2016-09-15 01:00:07.000 2s"};
-	int ans = solution(v);
+	vector<string> v = {"03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"};
+	string s = "CC#BCC#BCC#BCC#B";
+	string ans = solution(s,v);
 	cout << ans << endl;	
 	return	0;
 }

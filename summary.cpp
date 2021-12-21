@@ -132,7 +132,7 @@ a ~ b 소수가 몇개?	: eratos(int a, int b) -> amortized O(n)
 			  lcm(a,b) = a*b/gcd(a,b) 	
 
 dijkstra		: 가중치 그래프구조 - 특정노드에서 최단경로 탐색, priority_queue 
-			  O(ElogV)
+			  O(ElogE)
 
 floyd_warshall		: 가중치 그래프구조 - dp algorithm
 			  모든노드들의 최단경로의 인접행렬 만듬(대각원소는 0)
@@ -163,9 +163,7 @@ lcs			: longest common subsequence -> dp algorithm
 
 -----------------------------------------------------------------------------------------------------
 
-순위검색		: programmers(72412) -> bitmask_combination
-
-멀쩡한 사각형		: programmers(62048) -> x + y - gcd(x,y)
+멀쩡한 사각형		: programmers(62048) -> 시작점(0,0)에서 목적지(h,w)로 갈때 밟는 타일의 갯수
 
 행렬의 곱셈		: programmers(12949)
 
