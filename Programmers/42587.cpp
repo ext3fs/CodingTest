@@ -4,34 +4,30 @@
 #include <queue>
 using namespace std;
 
-int solution(vector<int> priorities, int location)
+int solution(vector<int> pri, int loc)
 {
-	int ans=1;
-	queue<pair<int,int>> q;
-	priority_queue<int> pq;
-
-	for(size_t i=0; i<priorities.size(); ++i){
-		q.push(make_pair(i,priorities[i]));
-		pq.push(priorities[i]);
-	}
-
-	while(1)
+    queue<int> q;
+    priority_queue<int> pq;
+    for(int i=0; i<pri.size(); ++i)
+        q.push(i), pq.push(pri[i]);
+    
+    int cnt=0;
+    while(1)
+    {
+        int idx = q.front();
+	q.pop();
+        
+	if(pri[idx] == pq.top())
 	{
-		pair<int,int> node = q.front();
-		q.pop();
+            pq.pop();
+            ++cnt;
 
-		if(node.second == pq.top())
-		{
-			if(node.first == location)
-				return ans;
-
-			++ans;
-			pq.pop();
-			continue;		
-		}
-
-		q.push(node);
-	}
+            if(idx == loc)
+		return cnt;          
+        }
+	else
+      	  q.push(idx);
+    }
 }
 
 int main(void)

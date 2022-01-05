@@ -8,7 +8,7 @@ vector<int> solution(vector<int> pro, vector<int> sp)
 {
 	//remain day calc
 	for(size_t i=0; i<pro.size(); ++i)
-		pro[i] = ceil((100.0 - pro[i])/sp[i]);		
+		pro[i] = (99 - pro[i])/sp[i] + 1;		
 
 	int curr_day = pro[0];
 	int cnt = 1;	

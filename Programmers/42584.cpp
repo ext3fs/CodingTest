@@ -4,6 +4,8 @@
 #include <stack>
 using namespace std;
 
+//몇번째에 가격이 떨어지냐? == 몇초간 유지되었나?
+
 vector<int> solution(vector<int> price)
 {
 	vector<int> ans(price.size());
