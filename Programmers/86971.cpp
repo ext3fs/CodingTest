@@ -1,63 +1,46 @@
 //programmers 전력망을 둘로 나누기(86971)
 #include <iostream>
 #include <vector>
-#include <unordered_set>
-#include <queue>
 using namespace std;
 
 /*
    * 트리구조에서 임의의 한노드에서 다른노드로 가는 경로는 유일하다
-   1. n의 갯수는 100이하 -> 완전탐색 가능
-   2. 간선 하나를 끊고 임의의 노드에서 가능한 모든 노드 탐색 -> O(2*E)보다 작다
-   3. 모든 간선에 대해 3 실행 -> O(V*E)  
+   1. 트리의 특성상 prev 노드만 체크하면 visit 체크가 된다
+   2. 트리의 어느 노드를 root로 정해도 트리구조가 된다
+   3. dfs()로 자식들의 수를 센다
+   4. prev와 curr간의 경로를 없애고 남은 노드수 = child[idx] + 1이다 
 */
 
-int bfs(int n, vector<unordered_set<int>>& adj)
+vector<int> child;
+
+void dfs(vector<vector<int>>& adj, int curr, int prev)
 {
-	queue<int> q;
-	vector<bool> visit(n+1);
-	int cnt = 0;
-
-	q.push(1);
-	visit[1] = true;
-	++cnt;
-
-	while(!q.empty())
+	for(int next : adj[curr])
 	{
-		int curr = q.front();
-		q.pop();
+		if(next == prev)
+			continue;
 
-		for(int node : adj[curr])
-		{
-			if(visit[node])
-				continue;
-			
-			q.push(node);
-			visit[node] = true;
-			++cnt;	
-		}
+		dfs(adj, next, curr);
+		child[curr] += child[next] + 1;
 	}
-	return abs((n - cnt) - cnt);	
 }
 
 int solution(int n, vector<vector<int>> wires)
 {
-	vector<unordered_set<int>> adj(n+1);
+	vector<vector<int>> adj(n+1);
 	for(auto& v : wires){
-		adj[v[0]].insert(v[1]);		
-		adj[v[1]].insert(v[0]);		
+		adj[v[0]].push_back(v[1]);		
+		adj[v[1]].push_back(v[0]);		
 	}
 
-	int ans = 2e9;
-	for(auto& v : wires)
-	{
-		adj[v[0]].erase(v[1]);		
-		adj[v[1]].erase(v[0]);		
-		
-		ans = min(ans, bfs(n,adj));
+	child.assign(n+1,0);
+	dfs(adj, 1, 0);
 
-		adj[v[0]].insert(v[1]);		
-		adj[v[1]].insert(v[0]);		
+	int ans = n;
+	for(int i : child){
+		int a = i + 1;
+		int b = n - a;
+		ans = min(ans, abs(a-b));
 	}
 	return ans;
 }

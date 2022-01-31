@@ -4,7 +4,8 @@ https://www.facebook.com/groups/174499879257223 : 생활코딩 커뮤니티
 https://acmicpc.slack.com : BOJ community
 https://www.onlinegdb.com : gdb IDE
 
-10000000 -> 1초
+10000000 -> 1 초
+10000    -> 1 ms
 
 log10 -> 3.333..
 log1000 -> 10
@@ -18,6 +19,7 @@ string  		: string str(n,0),
 		  	  front(), back(), erase(idx, n), erase(iter-1, iter+1), 
 	   	 	  str = string.substr(idx, n) -> idx부터 n개, substr(idx) -> idx부터 끝까지
 			  idx = string.find(ch) == string::npos, 
+			  idx = string.find("str") == string::npos, 
 			  str.replace(idx, n, "s") -> idx부터 n개를 s로 바꿈
 			  str = to_string(n)
 			  stoi("234AAAA"), stoll(str), stod(str)
@@ -34,10 +36,12 @@ vector			: front(), back(), push_back(),
 			  vector<vector<int>> v(n, vector<int>())
 			  v.erase(v.begin() + n);
 		  	  v.reserve(n) -> capacity change
+			  v.resize(n,0) -> 현재 값을 유지한채 size만 조정됨
+			  v.assign(n,0) -> 재할당 & 초기화
 
 stack			: <stack> top(), push(), pop()
 
-queue			: <queue> front(), push(), pop()
+queue			: dqueue로 구현, <queue> front(), push(), pop()
 
 priority_queue		: <queue> heap구조(root에 최대값) -> 중복원소 허용
 			  top()->O(1), push()->O(logN), pop()->O(logN)
@@ -50,6 +54,8 @@ priority_queue		: <queue> heap구조(root에 최대값) -> 중복원소 허용
 			  };
 
 deque			: <deque> front(), push_front(), push_back(), pop_front(), pop_back()
+
+list			: doubly linked list, find() 가능 
 
 set			: <set> red black tree(root에 중간값) -> 중복원소 허용안함
 			  find(val)->O(logN), insert(val)->O(logN), erase(val)->O(logN)
@@ -168,6 +174,8 @@ lis			: longest increasing subsequence -> dp algorithm
 lcs			: longest common subsequence -> dp algorithm
 
 -----------------------------------------------------------------------------------------------------
+비트연산		: n  & -n   -> 마지막 1의 위치에 1
+			  ~n & -~n  -> 마지막 0의 위치에 1 
 
 멀쩡한 사각형		: programmers(62048) -> 시작점(0,0)에서 목적지(h,w)로 갈때 밟는 타일의 갯수
 

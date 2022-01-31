@@ -4,7 +4,13 @@
 #include <set>
 using namespace std;
 
-//답의 범위를 예측하면 쉽게 구현할수 있다.. 
+/*
+   ans의 범위를 예측하면 쉽게 구현할수 있다.. 
+   
+   y값은 maxY - y : maxY가 1 이고 y가 0.5라면 y를 0.5로 만들어야한다
+   x값은 x - minX : minX가 -1 이고 x가 -0.5라면 x를 0.5로 만들어야한다  
+*/
+
 
 vector<string> solution(vector<vector<int>> line)
 {
