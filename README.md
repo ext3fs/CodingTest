@@ -27,7 +27,7 @@
 * [Trie](./trie2.cpp)
 * [Segment Tree](./segTree.cpp)
 * [FenWick Tree](./fenwickTree.cpp)
-* [Mini Max Algorithm](./miniMax.cpp)
+* [MiniMax Algorithm](./miniMax.cpp)
 * [longest increasing subsequence](./lis.cpp)
 * [longest common subsequence](./lcs.cpp)
 * [scale??](./scale.cpp)

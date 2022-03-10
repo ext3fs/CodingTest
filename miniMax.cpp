@@ -11,7 +11,6 @@ int dfs(vector<int>& v, int begin, int end, bool isA)
 		return 0;
 	
 	int& ret = cache[begin][end];
-
 	//pruning
 	if(ret > 0)
 		return ret;	

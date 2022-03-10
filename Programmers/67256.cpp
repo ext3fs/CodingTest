@@ -1,80 +1,48 @@
 //programmers 67256
-#include <string>
-#include <vector>
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
-string solution(vector<int> numbers, string hand)
+string solution(vector<int> num, string hand)
 {
-	string answer = "";
-	int pos_left=10, pos_right=12;
-	char ch;
-
-	if(hand == "left")
-		ch = 'L';
-	else
-		ch = 'R';
-	
-	int i=0;
-	for(int num : numbers)
+    string ans = "";
+    int left=10, right=12; 
+    int distL, distR;
+        
+    for(int val : num)
+    {
+        if(val == 0)
+            val = 11;
+        
+        if(val%3 == 1)
+    		ans.push_back('L'), left=val;
+        else if(val%3 == 0)
+    		ans.push_back('R'), right=val;
+        else
 	{
-		++i;
-
-		cout << i << pos_left << pos_right << endl;
-		if(num == 0)
-			num = 11;
-
-		if(num%3 == 1)
-		{
-			answer.push_back('L');
-			pos_left = num;
-			continue;
-		}
-
-		if(num%3 == 0)
-		{
-			answer.push_back('R');
-			pos_right = num;
-			continue;
-		}
-
-		int dist_left=0,dist_right=0;
-		int tmp_left = pos_left;
-		int tmp_right = pos_right;
-
-		//left
-		if(pos_left%3 == 1)
-		{
-			++tmp_left;
-			++dist_left;
-		}	
-		dist_left += abs(num-tmp_left)/3;
-
-		//right
-		if(pos_right%3 == 0)
-		{
-			--tmp_right;
-			++dist_right;
-		}	
-		dist_right += abs(num-tmp_right)/3;
-
-
-		if(dist_left == dist_right)
-			answer.push_back(ch);
-		else
-			answer.push_back(dist_left-dist_right>0 ? 'R':'L');
-
-		if(answer.back() == 'L')
-			pos_left = num;
-		else
-			pos_right = num;
-
-		cout << i << dist_left << dist_right << endl;
-		cout << i << pos_left << pos_right << endl;
-	}
-
-	return answer;
+    	    if(left%3 == 2)        
+            	distL = abs(left-val)/3;
+            else
+            	distL = abs(left+1-val)/3 + 1;
+    		
+            if(right%3 == 2)        
+            	distR = abs(right-val)/3;
+            else
+            	distR = abs(right-1-val)/3 + 1;
+            
+            if(distL < distR)
+    			ans.push_back('L'), left=val;
+            else if(distL > distR)
+    			ans.push_back('R'), right=val;
+            else{
+        		if(hand == "left")        
+    				ans.push_back('L'), left=val;
+                	else
+    				ans.push_back('R'), right=val;
+            }
+        }
+    }
+    return ans;
 }
 
 int	main(void)

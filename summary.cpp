@@ -20,7 +20,7 @@ string  		: string str(n,0),
 	   	 	  str = string.substr(idx, n) -> idx부터 n개, substr(idx) -> idx부터 끝까지
 			  idx = string.find(ch) == string::npos, 
 			  idx = string.find("str") == string::npos, 
-			  str.replace(idx, n, "s") -> idx부터 n개를 s로 바꿈
+			  str.replace(idx, n, "str") -> idx부터 n개를 s로 바꿈
 			  str = to_string(n)
 			  stoi("234AAAA"), stoll(str), stod(str)
 
