@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+//모든조합의 경우의 수는 O(2^N) -> 각 N마다 2가지 경우의 bit   
+
 void combinationAll(vector<int>& v)
 {
 	for(int val=1; val<1<<v.size(); ++val)

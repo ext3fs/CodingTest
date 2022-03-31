@@ -14,6 +14,11 @@ select count(distinct name)
 from animal_ins
 where name is not null
 
+select animal_type, count(*)
+from animal_ins
+where name in ("Cat","Dog")
+group by 1
+
 select name, count(*) as cnt
 from animal_ins
 group by name having cnt > 1
@@ -28,32 +33,18 @@ select (@hour := @hour + 1),
 from animal_outs
 where @hour < 23
 
+select b.animal_id
+from animal_ins as a
+right join animal_outs as b
+on a.animal_id = b.animal_id
+where a.animal is null
+
 select ifnull(name,"No name")
 from animal_outs
 
-select name
-from animal_outs
-where name in ("Lucy","Mitty")
+select if(name like "%EL%", "O", "X")
+from animal_ins
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select date_format(datetime, "%Y-%m-%d")
+from animal_ins
 
