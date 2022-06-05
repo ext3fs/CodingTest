@@ -27,6 +27,6 @@ int main(void)
 	vector<int> ar = {1,2,3};
 
 	tv.reserve(ar.size());		
-	dup_permutation(ar,3);
+	dup_permutation(ar,4);
 	return	0;
 }
