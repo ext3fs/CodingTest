@@ -1,33 +1,36 @@
-#include <vector>
 #include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
 
-vector<int> tv; 
-
-void dup_combination(vector<int>& ar, size_t r, size_t start)
+template <class T>
+void show(T& obj)
 {
-	if(tv.size() == r)
-	{	
-		for(auto& e : tv)
-			cout << e << " ";
-		cout << endl;
-		return;	
+	for(int i : obj)
+		cout << i << " ";
+	cout << endl;
+
+	//cout << obj.first << " : " << obj.second << endl;
+}
+
+struct cmp
+{
+	bool operator()(vector<int>& a, vector<int>& b){
+		return a[0] > b[0];
 	}	
-	
-	for(size_t i=start; i<ar.size(); ++i)
-	{
-		tv.push_back(ar[i]);
-		dup_combination(ar, r, i);
-		tv.pop_back();
-	}
-}
+};
 
-int	main(void)
+int main(void)
 {
-	vector<int> ar = {1,2,3};
+	priority_queue<vector<int>,vector<vector<int>>,cmp> q;
+	vector<int> a = {1,2};
+	vector<int> b = {2,3};
 
-	tv.reserve(ar.size()); 
-	dup_combination(ar, 4, 0);	
-	return	0;
+	q.push(a);
+	q.push(b);
+	
+	while(q.size())
+		show(q.top()), q.pop();
+
+	return 0;
 }
-

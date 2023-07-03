@@ -46,12 +46,16 @@ queue			: dqueue로 구현, <queue> front(), push(), pop()
 priority_queue		: <queue> heap구조(root에 최대값) -> 중복원소 허용
 			  top()->O(1), push()->O(logN), pop()->O(logN)
 			  priority_queue<int,vector<int>,greater<int>> q;
-			  priority_queue<int,vector<int>,cmp> q;
+			  
 			  struct cmp{
-			  	bool operator()(int& a, int& b){
+			  	bool operator()(const int a, const int b) const {
 					return a > b;
 				}
 			  };
+			  priority_queue<int,vector<int>,cmp> q(v.begin(),v.end(),cmp);
+
+			  auto cmp = [](int a, int b) { return (a ^ 1) < (b ^ 1); };
+			  spriority_queue<int,vector<int>,decltype(cmp)> q(cmp); 
 
 deque			: <deque> front(), push_front(), push_back(), pop_front(), pop_back()
 

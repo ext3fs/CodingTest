@@ -2,7 +2,7 @@ CC	= g++
 OBJECTS	= curr.o 
 TARGET	= curr
 
-
+.PHONY : clean
 .SUFFIXES : .cpp .o
 
 .cpp.o :
