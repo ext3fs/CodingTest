@@ -4,12 +4,18 @@ https://www.facebook.com/groups/174499879257223 : 생활코딩 커뮤니티
 https://acmicpc.slack.com : BOJ community
 https://www.onlinegdb.com : gdb IDE
 
-10000000 -> 1 초
-10000    -> 1 ms
+10,000,000 -> 1 초
+10,000    -> 1 ms
 
+log1024 = 10
 log10 -> 3.333..
 log1000 -> 10
 log10000 -> 10 + 3.33..
+log100000 -> 10 + 3.33.. + 3.22..
+
+프로그래머스 
+o(10,000,000) -> 100ms
+o(1억) -> 1000ms -> 1초 
 
 0x7fffffff -> int max
 0x80000000 -> int min
