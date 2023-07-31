@@ -4,14 +4,14 @@ https://www.facebook.com/groups/174499879257223 : 생활코딩 커뮤니티
 https://acmicpc.slack.com : BOJ community
 https://www.onlinegdb.com : gdb IDE
 
-10,000,000 -> 1 초
 10,000    -> 1 ms
+10,000,000 -> 1 초
 
 log1024 = 10
 log10 -> 3.333..
 log1000 -> 10
 log10000 -> 10 + 3.33..
-log100000 -> 10 + 3.33.. + 3.22..
+log100000 -> 10 + 3.33.. + 3.33..
 
 프로그래머스 
 o(10,000,000) -> 100ms
