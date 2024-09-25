@@ -44,6 +44,9 @@ vector			: front(), back(), push_back(),
 		  	  v.reserve(n) -> capacity change
 			  v.resize(n,0) -> 현재 값을 유지한채 size만 조정됨
 			  v.assign(n,0) -> 재할당 & 초기화
+			  v.insert(v.begin(), 7);
+			  v.rotate(v.begin(), v.begin()+1, v.end()) -> 왼쪽으로 한번 회전, 중간의 포지션을 v.begin()으로 맞춤 
+			  v.rotate(v.begin(), v.end()-3, v.end()) -> 오른쪽으로 세번 회전 
 
 stack			: <stack> top(), push(), pop()
 
